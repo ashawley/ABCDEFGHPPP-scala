@@ -62,7 +62,9 @@ scalacOptions ++= {
         "-Ywarn-unused:params",
         "-Ywarn-unused:patvars",
         "-Ywarn-unused:privates",
-        "-Ywarn-value-discard"
+        "-Ywarn-value-discard",
+        "-Yno-predef",
+        "-Yno-imports"
       )
     case Some((2, 11)) => 
       // https://tpolecat.github.io/2014/04/11/scalac-flags.html
@@ -103,6 +105,13 @@ scalacOptions ++= {
       Seq()
   }
 }
+
+scalacOptions in (Compile, console) --= Seq(
+  "-Xfatal-warnings",
+  "-Ywarn-unused:imports",
+  "-Yno-predef",
+  "-Yno-imports"
+)
 
 apiMappings ++= Map(
   scalaInstance.value.libraryJar
