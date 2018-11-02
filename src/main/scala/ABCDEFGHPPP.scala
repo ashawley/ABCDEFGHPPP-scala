@@ -61,7 +61,7 @@ import java.lang.NumberFormatException
  * }}}
  * 
  * However, a brute-force heuristic is used, so complexity severely limits
- * the capabilities to solve in larger bases than 16.
+ * the capability to solve bases larger than 16.
  */
 object ABCDEFGHPPP {
 
@@ -143,7 +143,6 @@ object ABCDEFGHPPP {
     * @param  radix Base number system
     * @param  tuple 9 Integers  
     * @return Nothing
-    * @throws scala.MatchError When 
     */
   def output(radix: Int): PartialFunction[(Int,Int,Int,Int,Int,Int,Int,Int,Int),Unit] = {
     case (a, b, c, d, e, f, g, h, p) =>
@@ -192,6 +191,9 @@ object ABCDEFGHPPP {
 
   /**
     * Same as [[main]], but silently quit if failure or no argument.
+    * 
+    * @param  args Arguments
+    * @return Nothing
     */
   def main2(args: Array[String]): Unit = {
     for (arg <- args.headOption if arg.trim.nonEmpty)
@@ -202,6 +204,9 @@ object ABCDEFGHPPP {
 
   /**
     * Same as [[main]], but fail if no argument provided.
+    * 
+    * @param  args Arguments
+    * @return Nothing
     */
   def require(args: Array[String]): Unit = {
     args.headOption
@@ -221,6 +226,10 @@ object ABCDEFGHPPP {
 
   /**
     * Same as [[require]], but fail if invalid argument provided.
+    * 
+    * @param  args Arguments
+    * @return Nothing
+    * @throws java.lang.IllegalArgumentException For radix argument to [[solve]]
     */
   def require2(args: Array[String]): Unit = {
     args.headOption

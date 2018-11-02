@@ -120,6 +120,6 @@ apiMappings ++= Option(System.getProperty("sun.boot.class.path")).flatMap { clas
     // If everything fails, jam in the Java 11 base module.
     Map(
       file("/modules/java.base")
-        -> url("http://docs.oracle.com/en/java/javase/11/docs/api")
+        -> url("http://docs.oracle.com/en/java/javase/11/docs/api/java.base")
     )
   }
