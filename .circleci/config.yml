@@ -10,10 +10,10 @@ jobs:
           keys:
             - sbt-deps-v1-{{ checksum "build.sbt" }}
             - sbt-deps-v1-
-      - run: sbt ++2.10.7    update compile doc "run 10" "run 12"
-      - run: sbt ++2.11.12   update compile doc "run 10" "run 12"
-      - run: sbt ++2.12.7    update compile doc "run 10" "run 12"
-      - run: sbt ++2.13.0-M5 update compile doc "run 10" "run 12"
+      - run: sbt ++2.10.7    update compile doc "run 10" "run 16"
+      - run: sbt ++2.11.12   update compile doc "run 10" "run 16"
+      - run: sbt ++2.12.7    update compile doc "run 10" "run 16"
+      - run: sbt ++2.13.0-M5 update compile doc "run 10" "run 16"
       - save_cache:
           key: sbt-deps-v1-{{ checksum "build.sbt" }}
           paths:

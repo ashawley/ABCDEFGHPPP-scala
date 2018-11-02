@@ -7,7 +7,7 @@ scala:
   - 2.13.0-M5
 
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION update compile "run 10" "run 12"
+  - sbt ++$TRAVIS_SCALA_VERSION update compile "run 10" "run 16"
 
 jdk:
   - oraclejdk8
