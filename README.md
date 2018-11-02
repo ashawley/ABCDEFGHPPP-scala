@@ -14,6 +14,11 @@ Problem: (_AB_ − _CD_ = _EF_) + _GH_ = _PPP_
 The values for _A_, _B_, _C_, _D_, _E_, _F_, _G_, _H_, and _P_
 are distinct and in the range of [0, 9].
 
+**Hint**: There is no way for _PPP_ to be 000.  There is no way for
+  _PPP_ to be 222 or greater.  It can only be 111.
+
+Solving the problem for a radix of 10:
+
 ```scala
 ABCDEFGHPPP.solve(10) // Decimal
 ```

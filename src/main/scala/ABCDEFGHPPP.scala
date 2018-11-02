@@ -62,6 +62,13 @@ import java.lang.NumberFormatException
  *
  * However, a brute-force heuristic is used, so complexity severely limits
  * the capability to solve bases larger than 16.
+ *
+ * There is an important optimization available for filtering out
+ * possible solutions based on the following assumptions about ''P'':
+ *
+ *  1. ''PPP'' can't be 000, by adding two 2-digit numbers.
+ *  1. ''PPP'' can't be 222 or greater, by subtracting two 2-digit numbers.
+ *  1. ''PPP'' can't be anything else, so PPP can only be 111.
  */
 object ABCDEFGHPPP {
 
@@ -111,12 +118,18 @@ object ABCDEFGHPPP {
       .map(_.toList)
       .map(listToTuple9)
       .filter {
-        case (0, _, _, _, _, _, _, _, _) => false
-        case (_, _, 0, _, _, _, _, _, _) => false
-        case (_, _, _, _, 0, _, _, _, _) => false
-        case (_, _, _, _, _, _, 0, _, _) => false
-        case (a, b, c, d, e, f, g, h, p) =>
-
+        case (0, _, _, _, _, _, _, _, _)           => false
+        case (_, _, 0, _, _, _, _, _, _)           => false
+        case (_, _, _, _, 0, _, _, _, _)           => false
+        case (_, _, _, _, _, _, 0, _, _)           => false
+        // PPP can't be 000, 
+        //   by adding two 2-digit numbers.
+        // PPP can't be 222 or greater,
+        //   by subtracting two 2-digit numbers.
+        case (_, _, _, _, _, _, _, _, p) if p != 1 => false
+        // PPP can't be anything else,
+        //   so PPP can only be 111.
+        case (a, b, c, d, e, f, g, h, p) if p == 1 => {
           val AB  = a * radix + b
           val CD  = c * radix + d
           val EF  = e * radix + f
@@ -134,6 +147,7 @@ object ABCDEFGHPPP {
              ==
             PPP
           )
+        }
       }
   }
 
