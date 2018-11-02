@@ -1,18 +1,18 @@
 /**
  * ABCDEFGHPPP.scala --- ABCDEFGHPPP problem
- * 
+ *
  * Copyright (C) 2018  Aaron S. Hawley
- * 
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation, either version 3 of
  * the License, or (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -47,19 +47,19 @@ import java.lang.NumberFormatException
  * -----
  *   PPP
  * </pre>
- *  
+ *
  * The values for ''A'', ''B'', ''C'', ''D'', ''E'', ''F'', ''G'',
  * ''H'', and ''P'' are distinct and in the range of [0, 9].
- * 
+ *
  * Example: {{{
  * ABCDEFGHPPP.solve(10) // Decimal
  * }}}
- * 
+ *
  * It's possible to [[solve]] for other base number systems than just
  * decimal: {{{
  * ABCDEFGHPPP.solve(16) // Hex system
  * }}}
- * 
+ *
  * However, a brute-force heuristic is used, so complexity severely limits
  * the capability to solve bases larger than 16.
  */
@@ -69,7 +69,7 @@ object ABCDEFGHPPP {
     * Convert list of 9 integers to a 9 integer tuple.
     *
     * Otherwise, throw a runtime error.
-    * 
+    *
     * @param  xs List of 9 integers
     * @return The 9 integers of the list in the same order
     * @throws java.lang.IllegalArgumentException When not exactly 9 elements
@@ -86,17 +86,17 @@ object ABCDEFGHPPP {
 
   /**
     * Solve ABCDEFGHPPP for `radix` using brute-force.
-    * 
+    *
     * Generates all permutations of the distinct range 0 to `radix`:
     *
     * For `radix` of ''n'', tries ''n!'' / (''n'' &minus; 9)''!''
     * possible solutions.
-    * 
+    *
     *  1. For octal (base 8), there are zero cases of 9 values.
     *  1. For decimal (base 10), this is 3,628,800 values.
     *  1. For hex (base 16), this is 4,151,347,200 values.
     *  1. For vigesimal (base 20), this is 60,949,324,800.
-    * 
+    *
     * @param  radix Base number system
     * @return Nothing
     * @throws java.lang.IllegalArgumentException When radix 8 or less
@@ -139,9 +139,9 @@ object ABCDEFGHPPP {
 
   /**
     * Display a solution in the terminal screen.
-    * 
+    *
     * @param  radix Base number system
-    * @param  tuple 9 Integers  
+    * @param  tuple 9 Integers
     * @return Nothing
     */
   def output(radix: Int): PartialFunction[(Int,Int,Int,Int,Int,Int,Int,Int,Int),Unit] = {
@@ -171,7 +171,7 @@ object ABCDEFGHPPP {
   /**
     * Solve ABCDEFGHPPP for radix parameter in first argument,
     * else use base 10.
-    * 
+    *
     * @param  args Arguments
     * @return Nothing
     * @throws java.lang.NumberFormatException If arg isn't an Int
@@ -191,20 +191,20 @@ object ABCDEFGHPPP {
 
   /**
     * Same as [[main]], but silently quit if failure or no argument.
-    * 
+    *
     * @param  args Arguments
     * @return Nothing
     */
   def main2(args: Array[String]): Unit = {
     for (arg <- args.headOption if arg.trim.nonEmpty)
       for (radix <- Try(arg.toInt).filter(9 < _).filter(_ < 22))
-        yield 
+        yield
           solve(radix)
   }
 
   /**
     * Same as [[main]], but fail if no argument provided.
-    * 
+    *
     * @param  args Arguments
     * @return Nothing
     */
@@ -226,7 +226,7 @@ object ABCDEFGHPPP {
 
   /**
     * Same as [[require]], but fail if invalid argument provided.
-    * 
+    *
     * @param  args Arguments
     * @return Nothing
     * @throws java.lang.IllegalArgumentException For radix argument to [[solve]]
