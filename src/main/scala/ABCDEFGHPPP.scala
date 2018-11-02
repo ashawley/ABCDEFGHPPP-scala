@@ -18,13 +18,14 @@
  */
 
 import scala.Array
+import scala.Byte
 import scala.Console
 import scala.Int
 import scala.Iterator
-import scala.List
 import scala.PartialFunction
 import scala.StringContext
 import scala.Unit
+import scala.collection.immutable.Seq
 import scala.util.Try
 
 import scala.Predef.augmentString
@@ -81,9 +82,9 @@ object ABCDEFGHPPP {
     * @return The 9 integers of the list in the same order
     * @throws java.lang.IllegalArgumentException When not exactly 9 elements
     */
-  def listToTuple9(xs: List[Int]): (Int,Int,Int,Int,Int,Int,Int,Int,Int) = {
+  def listToTuple9(xs: Seq[Byte]): (Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte) = {
     xs match {
-      case List(a, b, c, d, e, f, g, h, p) =>
+      case Seq(a, b, c, d, e, f, g, h, p) =>
         (a, b, c, d, e, f, g, h, p)
       case xs =>
         val msg = s"Expected 9 elements, got ${xs.size}"
@@ -108,14 +109,15 @@ object ABCDEFGHPPP {
     * @return Nothing
     * @throws java.lang.IllegalArgumentException When radix 8 or less
     */
-  def solve(radix: Int): Iterator[(Int,Int,Int,Int,Int,Int,Int,Int,Int)] = {
+  def solve(radix: Int): Iterator[(Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte)] = {
     if (radix < 8) {
       throw new IllegalArgumentException(s"Radix was less than 8: $radix")
     }
     (0 to radix - 1)
+      .map(_.toByte)
       .combinations(9)
-      .flatMap(_.toSeq.permutations)
-      .map(_.toList)
+      .flatMap(_.permutations)
+      .map(_.toSeq)
       .map(listToTuple9)
       .filter {
         case (0, _, _, _, _, _, _, _, _)           => false
@@ -158,17 +160,17 @@ object ABCDEFGHPPP {
     * @param  tuple 9 Integers
     * @return Nothing
     */
-  def output(radix: Int): PartialFunction[(Int,Int,Int,Int,Int,Int,Int,Int,Int),Unit] = {
+  def output(radix: Int): PartialFunction[(Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte),Unit] = {
     case (a, b, c, d, e, f, g, h, p) =>
-      val A = java.lang.Integer.toString(a, radix)
-      val B = java.lang.Integer.toString(b, radix)
-      val C = java.lang.Integer.toString(c, radix)
-      val D = java.lang.Integer.toString(d, radix)
-      val E = java.lang.Integer.toString(e, radix)
-      val F = java.lang.Integer.toString(f, radix)
-      val G = java.lang.Integer.toString(g, radix)
-      val H = java.lang.Integer.toString(h, radix)
-      val P = java.lang.Integer.toString(p, radix)
+      val A = java.lang.Integer.toString(a.toInt, radix)
+      val B = java.lang.Integer.toString(b.toInt, radix)
+      val C = java.lang.Integer.toString(c.toInt, radix)
+      val D = java.lang.Integer.toString(d.toInt, radix)
+      val E = java.lang.Integer.toString(e.toInt, radix)
+      val F = java.lang.Integer.toString(f.toInt, radix)
+      val G = java.lang.Integer.toString(g.toInt, radix)
+      val H = java.lang.Integer.toString(h.toInt, radix)
+      val P = java.lang.Integer.toString(p.toInt, radix)
       val solution =
         s"""|Solution:
             |    $A $B
