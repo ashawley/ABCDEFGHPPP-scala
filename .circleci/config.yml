@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: openjdk:8
+    steps:
+      - checkout
+      - restore_cache:
+          key: sbt-deps-v1-{{ checksum "build.sbt" }}
+          key: sbt-deps-v1-
+      - run: sbt ++2.10.7    update compile doc "run 10" "run 12"
+      - run: sbt ++2.11.12   update compile doc "run 10" "run 12"
+      - run: sbt ++2.12.7    update compile doc "run 10" "run 12"
+      - run: sbt ++2.13.0-M5 update compile doc "run 10" "run 12"
+      - save_cache:
+          key: sbt-deps-v1-{{ checksum "build.sbt" }}
+          paths:
+            - "~/.ivy2/cache"
+            - "~/.sbt"
+            - "~/.m2"

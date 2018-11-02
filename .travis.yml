@@ -1,0 +1,30 @@
+language: scala
+
+scala:
+  - 2.10.7
+  - 2.11.12
+  - 2.12.7
+  - 2.13.0-M5
+
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION update compile "run 10" "run 12"
+
+jdk:
+  - oraclejdk8
+  - openjdk11
+
+matrix:
+  exclude:
+    - jdk: openjdk11
+      scala: 2.11.12
+    - jdk: openjdk11
+      scala: 2.12.7
+
+before_cache:
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" | xargs rm
+cache:
+  directories:
+  - $HOME/.ivy2/cache
+  - $HOME/.sbt/boot
+  - $HOME/.sbt/launchers

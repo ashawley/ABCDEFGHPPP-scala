@@ -1,0 +1,26 @@
+# appveyor.yml
+
+environment:
+  matrix:
+    - SCALA_VERSION: 2.10.7
+    - SCALA_VERSION: 2.11.12
+    - SCALA_VERSION: 2.12.7
+    - SCALA_VERSION: 2.13.0-M5
+
+platform:
+  - x86
+  - x64
+
+install:
+  - cmd: choco install sbt -ia "INSTALLDIR=""C:\sbt"""
+  - cmd: SET PATH=C:\sbt\bin;%JAVA_HOME%\bin;%PATH%
+
+test_script:
+  - sbt ++%SCALA_VERSION% update compile doc "run 10" "run 12"
+
+cache:
+  - C:\sbt\
+  - C:\Users\appveyor\.m2
+  - C:\Users\appveyor\.ivy2
+
+build: off
