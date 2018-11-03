@@ -115,9 +115,8 @@ object ABCDEFGHPPP {
     }
     (0 to radix - 1)
       .map(_.toByte)
-      .combinations(9)
-      .flatMap(_.permutations)
-      .map(_.toSeq)
+      .permutations
+      .map(_.take(9).toSeq)
       .map(listToTuple9)
       .filter {
         case (0, _, _, _, _, _, _, _, _)           => false
