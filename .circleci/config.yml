@@ -79,5 +79,8 @@ workflows:
           name: 2.13.0-M3
           version: 2.13.0-M3!
       - scala_job:
+          name: 2.13.0-M4
+          version: 2.13.0-M4!
+      - scala_job:
           name: 2.13.0-M5
           version: 2.13.0-M5
