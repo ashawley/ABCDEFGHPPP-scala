@@ -50,18 +50,18 @@ scalacOptions ++= {
         "-Yno-adapted-args",
         "-Ypartial-unification",
         "-Ywarn-dead-code",
-        "-Ywarn-extra-implicit",
+        // "-Ywarn-extra-implicit", // 2.12.0
         "-Ywarn-inaccessible",
         "-Ywarn-infer-any",
         "-Ywarn-nullary-override",
         "-Ywarn-nullary-unit",
         "-Ywarn-numeric-widen",
-        "-Ywarn-unused:implicits",
-        "-Ywarn-unused:imports",
-        "-Ywarn-unused:locals",
-        "-Ywarn-unused:params",
-        "-Ywarn-unused:patvars",
-        "-Ywarn-unused:privates",
+        // "-Ywarn-unused:implicits", // 2.12.0
+        // "-Ywarn-unused:imports", // 2.12.0
+        // "-Ywarn-unused:locals", // 2.12.0
+        // "-Ywarn-unused:params", // 2.12.0
+        // "-Ywarn-unused:patvars", // 2.12.0
+        // "-Ywarn-unused:privates", // 2.12.0
         "-Ywarn-value-discard",
         "-Yno-predef",
         "-Yno-imports"
