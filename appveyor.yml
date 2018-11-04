@@ -11,8 +11,8 @@ environment:
     - SCALA_VERSION: 2.12.0
     - SCALA_VERSION: 2.12.4
     - SCALA_VERSION: 2.12.7
-    - SCALA_VERSION: 2.13.0-M1
-    - SCALA_VERSION: 2.13.0-M3
+    - SCALA_VERSION: 2.13.0-M1!
+    - SCALA_VERSION: 2.13.0-M3!
     - SCALA_VERSION: 2.13.0-M5
 
 platform:
