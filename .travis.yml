@@ -24,6 +24,8 @@ matrix:
       jdk: openjdk11
     - scala: 2.11.6
       jdk: openjdk11
+    - scala: 2.12.0
+      jdk: openjdk11
 
 script:
   - sbt ++$TRAVIS_SCALA_VERSION update compile "run 10" "run 16"
