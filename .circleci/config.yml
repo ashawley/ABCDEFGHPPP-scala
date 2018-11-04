@@ -46,8 +46,8 @@ workflows:
   build:
     jobs:
       - scala_job:
-          name: 2.10.0
-          version: 2.10.0
+          name: 2.10.2
+          version: 2.10.2
       - scala_job:
           name: 2.10.4
           version: 2.10.4

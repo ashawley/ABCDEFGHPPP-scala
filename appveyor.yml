@@ -2,7 +2,7 @@
 
 environment:
   matrix:
-    - SCALA_VERSION: 2.10.0
+    - SCALA_VERSION: 2.10.2
     - SCALA_VERSION: 2.10.4
     - SCALA_VERSION: 2.10.7
     - SCALA_VERSION: 2.11.0
