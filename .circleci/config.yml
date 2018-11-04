@@ -1,18 +1,18 @@
 version: 2.1
 
 executors:
-  scala:
+  scala_jdk_executor:
     docker:
       - image: circleci/openjdk:8-jdk
 
 commands:
-  sbt:
+  sbt_cmd:
     description: "Build with sbt"
     parameters:
-      SCALA_VERSION:
+      scala_version:
         type: string
         default: 2.12.7
-      SBT_TASKS:
+      sbt_tasks:
         type: string
         default: update compile test:compile test doc package
     steps:
@@ -20,7 +20,7 @@ commands:
           keys:
             - sbt-deps-v1-{{ checksum "build.sbt" }}
             - sbt-deps-v1-
-      - run: sbt ++<< parameters.SCALA_VERSION >> << parameters.SBT_TASKS >>
+      - run: sbt ++<< parameters.scala_version >> << parameters.sbt_tasks >>
       - save_cache:
           key: sbt-deps-v1-{{ checksum "build.sbt" }}
           paths:
@@ -29,40 +29,31 @@ commands:
             - "~/.m2"
 
 jobs:
-  scala2_10:
-    executor: scala
+  scala_job:
+    executor: scala_jdk_executor
+    parameters:
+      version:
+        description: "Scala version"
+        default: 2.10.7
+        type: string
     steps:
       - checkout
-      - sbt:
-          SCALA_VERSION: 2.10.7
-          SBT_TASKS: update compile doc "run 10" "run 16"
-  scala2_11:
-    executor: scala
-    steps:
-      - checkout
-      - sbt:
-          SCALA_VERSION: 2.11.12
-          SBT_TASKS: update compile doc "run 10" "run 16"
-  scala2_12:
-    executor: scala
-    steps:
-      - checkout
-      - sbt:
-          SCALA_VERSION: 2.12.7
-          SBT_TASKS: update compile doc "run 10" "run 16"
-  scala2_13:
-    executor: scala
-    steps:
-      - checkout
-      - sbt:
-          SCALA_VERSION: 2.13.0-M5
-          SBT_TASKS: update compile doc "run 10" "run 16"
-
+      - sbt_cmd:
+          scala_version: << parameters.version >>
+          sbt_tasks: update compile doc "run 10" "run 16"
 
 workflows:
   build:
     jobs:
-      - scala2_10
-      - scala2_11
-      - scala2_12
-      - scala2_13
+      - scala_job:
+          name: 2.10.7
+          version: 2.10.7
+      - scala_job:
+          name: 2.11.12
+          version: 2.11.12
+      - scala_job:
+          name: 2.12.7
+          version: 2.12.7
+      - scala_job:
+          name: 2.13.0-M5
+          version: 2.13.0-M5
