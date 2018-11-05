@@ -195,9 +195,9 @@ object ABCDEFGHPPP {
     */
   def main(args: Array[String]): Unit = {
     val radix = args.headOption.getOrElse("10").toInt
-    val solns = solve(radix).toSeq
+    val (solns, solnsCopy) = solve(radix).duplicate
     solns.foreach(output(radix)(_))
-    val n = solns.size
+    val n = solnsCopy.size
     if (n == 1) {
       Console.out.println("Found 1 solution")
     } else {
