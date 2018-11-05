@@ -1,6 +1,10 @@
 ABCDEFGHPPP problem in Scala
 ============================
 
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/ashawley/ABCDEFGHPPP-scala?svg=true)](https://ci.appveyor.com/project/ashawley/ABCDEFGHPPP-scala)
+[![Circle](https://circleci.com/gh/ashawley/ABCDEFGHPPP-scala.svg?style=svg)](https://circleci.com/gh/ashawley/ABCDEFGHPPP-scala)
+[![Travis](https://img.shields.io/travis/ashawley/ABCDEFGHPPP-scala.svg)](https://travis-ci.org/ashawley/ABCDEFGHPPP-scala)
+
 Problem: (_AB_ − _CD_ = _EF_) + _GH_ = _PPP_
 
        AB
