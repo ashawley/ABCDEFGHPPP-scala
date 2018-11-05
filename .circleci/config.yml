@@ -70,6 +70,12 @@ workflows:
           name: 2.12.4
           version: 2.12.4
       - scala_job:
+          name: 2.12.5
+          version: 2.12.5
+      - scala_job:
+          name: 2.12.6
+          version: 2.12.6
+      - scala_job:
           name: 2.12.7
           version: 2.12.7
       - scala_job:
