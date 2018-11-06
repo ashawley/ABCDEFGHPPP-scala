@@ -10,10 +10,6 @@ crossScalaVersions := Seq(
   "2.10.7",
   "2.11.12",
   "2.12.7",
-  "2.13.0-M1",
-  "2.13.0-M2",
-  "2.13.0-M3",
-  "2.13.0-M4",
   "2.13.0-M5"
 )
 
@@ -54,18 +50,18 @@ scalacOptions ++= {
         "-Yno-adapted-args",
         "-Ypartial-unification",
         "-Ywarn-dead-code",
-        // "-Ywarn-extra-implicit", // 2.12.0
+        "-Ywarn-extra-implicit",
         "-Ywarn-inaccessible",
         "-Ywarn-infer-any",
         "-Ywarn-nullary-override",
         "-Ywarn-nullary-unit",
         "-Ywarn-numeric-widen",
-        // "-Ywarn-unused:implicits", // 2.12.0
-        // "-Ywarn-unused:imports", // 2.12.0
-        // "-Ywarn-unused:locals", // 2.12.0
-        // "-Ywarn-unused:params", // 2.12.0
-        // "-Ywarn-unused:patvars", // 2.12.0
-        // "-Ywarn-unused:privates", // 2.12.0
+        "-Ywarn-unused:implicits",
+        "-Ywarn-unused:imports",
+        "-Ywarn-unused:locals",
+        "-Ywarn-unused:params",
+        "-Ywarn-unused:patvars",
+        "-Ywarn-unused:privates",
         "-Ywarn-value-discard",
         "-Yno-predef",
         "-Yno-imports"

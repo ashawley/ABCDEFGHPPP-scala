@@ -2,20 +2,9 @@
 
 environment:
   matrix:
-    - SCALA_VERSION: 2.10.2
-    - SCALA_VERSION: 2.10.4
     - SCALA_VERSION: 2.10.7
-    - SCALA_VERSION: 2.11.0
-    - SCALA_VERSION: 2.11.6
     - SCALA_VERSION: 2.11.12
-    - SCALA_VERSION: 2.12.0
-    - SCALA_VERSION: 2.12.4
-    - SCALA_VERSION: 2.12.5
-    - SCALA_VERSION: 2.12.6
     - SCALA_VERSION: 2.12.7
-    - SCALA_VERSION: 2.13.0-M1
-    - SCALA_VERSION: 2.13.0-M3
-    - SCALA_VERSION: 2.13.0-M4
     - SCALA_VERSION: 2.13.0-M5
 
 platform:
@@ -27,7 +16,7 @@ install:
   - cmd: SET PATH=C:\sbt\bin;%JAVA_HOME%\bin;%PATH%
 
 test_script:
-  - sbt "++%SCALA_VERSION%" update compile doc "run 10" "run 16"
+  - sbt ++%SCALA_VERSION% update compile doc "run 10" "run 16"
 
 cache:
   - C:\sbt\
