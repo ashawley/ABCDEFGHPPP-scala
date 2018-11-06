@@ -41,6 +41,12 @@ import java.lang.IllegalArgumentException
  *
  * The values for ''A'', ''B'', ''C'', ''D'', ''E'', ''F'', ''G'',
  * ''H'', and ''P'' are distinct and in the range of [0, 9].
+ * 
+ * It is not possible to sum two numbers and get zero, unless they are
+ * also zero, so ''P'' can't be zero.
+ * 
+ * The two-digit numbers should be actual two-digit numbers, so ''A'',
+ * ''C'', ''E'', ''G'' cannot be 0.
  *
  * Example: {{{
  * ABCDEFGHPPP.solve(10) // Decimal
@@ -110,6 +116,7 @@ object ABCDEFGHPPP {
       .map(_.toSeq)
       .map(listToTuple9)
       .filter {
+        // No leading zeros. A, C, E, G != 0
         case (0, _, _, _, _, _, _, _, _)           => false
         case (_, _, 0, _, _, _, _, _, _)           => false
         case (_, _, _, _, 0, _, _, _, _)           => false

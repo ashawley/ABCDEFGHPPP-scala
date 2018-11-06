@@ -16,7 +16,8 @@ Problem: (_AB_ − _CD_ = _EF_) + _GH_ = _PPP_
       PPP
 
 The values for _A_, _B_, _C_, _D_, _E_, _F_, _G_, _H_, and _P_
-are distinct and in the range of [0, 9].
+are distinct and in the range of [0, 9].  The values for _A_, _C_,
+_E_, _G_ cannot be 0.  The numbers cannot repeat.
 
 **Hint**: There is no way for _PPP_ to be 000.  There is no way for
   _PPP_ to be 222 or greater.  It can only be 111.
