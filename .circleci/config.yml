@@ -54,6 +54,3 @@ workflows:
       - scala_job:
           name: 2.12.7
           version: 2.12.7
-      - scala_job:
-          name: 2.13.0-M5
-          version: 2.13.0-M5

@@ -115,6 +115,8 @@ object ABCDEFGHPPP {
       .flatMap(_.permutations)
       .map(_.toSeq)
       .map(listToTuple9)
+      .toIterable
+      .par
       .filter {
         // No leading zeros. A, C, E, G != 0
         case (0, _, _, _, _, _, _, _, _)           => false
@@ -148,5 +150,6 @@ object ABCDEFGHPPP {
           )
         }
       }
+      .toIterator
   }
 }
