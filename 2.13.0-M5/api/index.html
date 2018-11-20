@@ -8,7 +8,9 @@ var toRoot = '';</script></head><body><div id="search"><span id="doc-title"><spa
 -----
   PPP
 </pre></p><p>The values for <i>A</i>, <i>B</i>, <i>C</i>, <i>D</i>, <i>E</i>, <i>F</i>, <i>G</i>,
-<i>H</i>, and <i>P</i> are distinct and in the range of [0, 9].</p><p>Example: </p><pre>ABCDEFGHPPP.solve(<span class="num">10</span>) <span class="cmt">// Decimal</span></pre><p>It's possible to <a href="ABCDEFGHPPP$.html#solve(radix:Int):Iterator[(Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte)]" name="ABCDEFGHPPP#solve" id="ABCDEFGHPPP#solve" class="extmbr">solve</a> for other base number systems than just
+<i>H</i>, and <i>P</i> are distinct and in the range of [0, 9].</p><p>It is not possible to sum two numbers and get zero, unless they are
+also zero, so <i>P</i> can't be zero.</p><p>The two-digit numbers should be actual two-digit numbers, so <i>A</i>,
+<i>C</i>, <i>E</i>, <i>G</i> cannot be 0.</p><p>Example: </p><pre>ABCDEFGHPPP.solve(<span class="num">10</span>) <span class="cmt">// Decimal</span></pre><p>It's possible to <a href="ABCDEFGHPPP$.html#solve(radix:Int):Iterator[(Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte,Byte)]" name="ABCDEFGHPPP#solve" id="ABCDEFGHPPP#solve" class="extmbr">solve</a> for other base number systems than just
 decimal: </p><pre>ABCDEFGHPPP.solve(<span class="num">16</span>) <span class="cmt">// Hex system</span></pre><p>However, a brute-force heuristic is used, so complexity severely limits
 the capability to solve bases larger than 16.</p><p>There is an important optimization available for filtering out
 possible solutions based on the following assumptions about <i>P</i>:</p><ol class="decimal"><li><i>PPP</i> can't be 000, by adding two 2-digit numbers.</li><li><i>PPP</i> can't be 222 or greater, by subtracting two 2-digit numbers.</li><li><i>PPP</i> can't be anything else, so PPP can only be 111.
