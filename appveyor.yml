@@ -15,7 +15,7 @@ install:
   - cmd: SET PATH=C:\sbt\bin;%JAVA_HOME%\bin;%PATH%
 
 test_script:
-  - sbt ++%SCALA_VERSION% update compile doc "run 10" "run 16"
+  - sbt ++%SCALA_VERSION% update compile doc "run 10"
 
 cache:
   - C:\sbt\
