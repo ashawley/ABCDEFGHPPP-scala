@@ -40,7 +40,7 @@ jobs:
       - checkout
       - sbt_cmd:
           scala_version: << parameters.version >>
-          sbt_tasks: update compile doc "run 10" "run 16"
+          sbt_tasks: update compile doc "run 10"
 
 workflows:
   build:
