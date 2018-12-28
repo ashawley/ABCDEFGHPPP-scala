@@ -11,7 +11,7 @@ commands:
     parameters:
       scala_version:
         type: string
-        default: 2.12.7
+        default: 2.12.8
       sbt_tasks:
         type: string
         default: update compile test:compile test doc package
@@ -52,8 +52,8 @@ workflows:
           name: 2.11.12
           version: 2.11.12
       - scala_job:
-          name: 2.12.7
-          version: 2.12.7
+          name: 2.12.8
+          version: 2.12.8
       - scala_job:
           name: 2.13.0-M5
           version: 2.13.0-M5
