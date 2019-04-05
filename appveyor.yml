@@ -5,7 +5,7 @@ environment:
     - SCALA_VERSION: 2.10.7
     - SCALA_VERSION: 2.11.12
     - SCALA_VERSION: 2.12.8
-    - SCALA_VERSION: 2.13.0-M5
+    - SCALA_VERSION: 2.13.0-RC1
 
 platform:
   - x86
