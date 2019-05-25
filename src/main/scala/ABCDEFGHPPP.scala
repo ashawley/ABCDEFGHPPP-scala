@@ -1,7 +1,7 @@
 /**
  * ABCDEFGHPPP.scala --- ABCDEFGHPPP problem
  *
- * Copyright (C) 2018  Aaron S. Hawley
+ * Copyright (C) 2018-2019  Aaron S. Hawley
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -116,25 +116,27 @@ object ABCDEFGHPPP {
       .map(_.toSeq)
       .map(listToTuple9)
       .filter {
-        // No leading zeros. A, C, E, G != 0
+        // Optimization:  No leading zeros;
+        //    A != 0
         case (0, _, _, _, _, _, _, _, _)           => false
+        //          C != 0
         case (_, _, 0, _, _, _, _, _, _)           => false
+        //                E != 0
         case (_, _, _, _, 0, _, _, _, _)           => false
+        //                      G != 0
         case (_, _, _, _, _, _, 0, _, _)           => false
-        // PPP can't be 000, 
-        //   by adding two 2-digit numbers.
-        // PPP can't be 222 or greater,
-        //   by subtracting two 2-digit numbers.
+        // PPP can't be 000, by adding two 2-digit numbers.
+        // PPP can't be 222 or greater, by subtracting 2-digit numbers.
         case (_, _, _, _, _, _, _, _, p) if p != 1 => false
-        // PPP can't be anything else,
-        //   so PPP can only be 111.
+        // PPP can't be anything else, so PPP can only be 111.
         case (a, b, c, d, e, f, g, h, p) if p == 1 => {
           val AB  = a * radix + b
           val CD  = c * radix + d
           val EF  = e * radix + f
           val GH  = g * radix + h
           val PPP = p * radix * radix +
-                    p * radix + p
+                    p * radix +
+                    p
           (
              AB
            - CD

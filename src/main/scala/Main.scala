@@ -1,7 +1,7 @@
 /**
  * Main.scala --- Command-line application
  *
- * Copyright (C) 2018  Aaron S. Hawley
+ * Copyright (C) 2018-2019  Aaron S. Hawley
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
