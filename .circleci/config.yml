@@ -52,8 +52,8 @@ workflows:
           name: 2.11.12
           version: 2.11.12
       - scala_job:
-          name: 2.12.8
-          version: 2.12.8
+          name: 2.12.9
+          version: 2.12.9
       - scala_job:
-          name: 2.13.0-RC2
-          version: 2.13.0-RC2
+          name: 2.13.0
+          version: 2.13.0
